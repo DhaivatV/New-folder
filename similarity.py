@@ -7,7 +7,7 @@ df = pd.read_csv('assistant_qa.csv')
 
 COMPLETIONS_MODEL = "text-davinci-003"
 EMBEDDING_MODEL = "text-embedding-ada-002"
-openai.api_key = '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'
+openai.api_key = 'API_KEY'
 
 def get_embedding(text: str, model: str=EMBEDDING_MODEL) -> list:
     result = openai.Embedding.create(
