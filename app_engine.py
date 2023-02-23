@@ -2,19 +2,19 @@ import os
 import openai
 from similarity import get_similar_context
 
-openai.api_key = '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'
+openai.api_key = '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'
 
-query = input()
-context = (get_similar_context(query)).strip()
+# query = input()
+# context = (get_similar_context(query)).strip()
 start_sequence = "\nA:"
 restart_sequence = "\n\nQ: "
-prompt_input_u = f'{context}'
+# prompt_input_u = f'{context}'
 
 
 def func(value):
     return ''.join(value.splitlines())
 
-query_f = ((func(prompt_input_u)).strip())
+
 
 
 def get_response(prompt_input):
@@ -34,5 +34,11 @@ def get_response(prompt_input):
     
 
 if __name__=='__main__':
-    print(get_response(((query_f + f'\n\nQ:{query}?\n\nA:'))))
+
+    while True:
+        query = input()
+        context = (get_similar_context(query)).strip()
+        prompt_input_u = f'{context}'
+        query_f = ((func(prompt_input_u)).strip())
+        print(get_response(((query_f + f'\n\nQ:{query}?\n\nA:'))))
 
