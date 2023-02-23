@@ -30,7 +30,7 @@ def get_response(prompt_input):
     )
 
     return (((response.get('choices'))[0]).get('text'))
-    # return response
+   
     
 
 if __name__=='__main__':
