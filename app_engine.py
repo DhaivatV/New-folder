@@ -2,7 +2,7 @@ import os
 import openai
 from similarity import get_similar_context
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 query = input()
 context = (get_similar_context(query)).strip()
