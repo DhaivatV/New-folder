@@ -29,8 +29,8 @@ def get_response(prompt_input):
     stop=["\n"]
     )
 
-    # return (((response.get('choices'))[0]).get('text'))
-    return response
+    return (((response.get('choices'))[0]).get('text'))
+    # return response
     
 
 if __name__=='__main__':
