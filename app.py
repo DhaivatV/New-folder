@@ -2,7 +2,7 @@ import os
 import openai
 from similarity import get_similar_context
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 query = input()
 context = (get_similar_context(query)).strip()
@@ -29,22 +29,10 @@ def get_response(prompt_input):
     stop=["\n"]
     )
 
-    return (((response.get('choices'))[0]).get('text'))
+    # return (((response.get('choices'))[0]).get('text'))
+    return response
     
 
 if __name__=='__main__':
-    # res=get_response(query_f)
-    # print(res)
-    print(query_f)
+    print(get_response(((query_f + f'\n\nQ:{query}?\n\nA:'))))
 
-# with open('file.txt','r+') as f:
-#     f.write(query_f)
-#     f.close()
-
-# with open('file.txt','r+') as f:
-#     k = f.read()
-#     print(k)
-#     # res = get_response(k)
-#     # print(res)
-#     print(k)
-#     f.close()
