@@ -3,11 +3,11 @@ import openai
 import pandas as pd
 
 
-df = pd.read_csv('assistant_qa.csv')
+df = pd.read_csv('/workspaces/assistant_qa_engine/final_qa.csv')
 
 COMPLETIONS_MODEL = "text-davinci-003"
 EMBEDDING_MODEL = "text-embedding-ada-002"
-openai.api_key = 'API_KEY'
+openai.api_key = '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'
 
 def get_embedding(text: str, model: str=EMBEDDING_MODEL) -> list:
     result = openai.Embedding.create(
@@ -72,15 +72,14 @@ def order_document_sections_by_query_similarity(query: str, contexts: dict) -> l
     if len_cand<=2:
       return candidate
     else:
-      return candidate[:5]
+      return candidate[:10]
     
-
 def get_similar_context(query):
-   document_embeddings = load_embeddings("assistant_qa_embeddings.csv")
-   context_list = (order_document_sections_by_query_similarity(query, document_embeddings))
-   context = " ".join(context_list)
+  document_embeddings = load_embeddings("/workspaces/assistant_qa_engine/final_embeddings.csv")
+  context_list = (order_document_sections_by_query_similarity(query, document_embeddings))
+  context = " ".join(context_list)
   
-   return context.replace('\n',' ')
+  return context.replace('\n',' ')
 
 
 

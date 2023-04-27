@@ -2,7 +2,7 @@ import os
 import openai
 from similarity import get_similar_context
 
-openai.api_key = 'API_KEY'
+openai.api_key = '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'
 
 # query = input()
 # context = (get_similar_context(query)).strip()
@@ -19,7 +19,7 @@ def func(value):
 
 def get_response(prompt_input):
     response = openai.Completion.create(
-    model="curie-instruct-beta",
+    model="text-davinci-003",
     prompt= prompt_input,
     temperature=0,
     max_tokens=100,
@@ -36,9 +36,10 @@ def get_response(prompt_input):
 if __name__=='__main__':
 
     while True:
-        query = input()
+        query = input().replace('CSI', 'corporate strategy and implementation in aaruush').replace('ORM', 'Operations and Resource Management in aaruush').replace('PR', 'Public Relations in aaruush')
         context = (get_similar_context(query)).strip()
         prompt_input_u = f'{context}'
         query_f = ((func(prompt_input_u)).strip())
+        # print(query)
         print(get_response(((query_f + f'\n\nQ:{query}?\n\nA:'))))
 
